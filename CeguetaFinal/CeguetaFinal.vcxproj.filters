@@ -27,6 +27,9 @@
     <ClInclude Include="Output.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -36,6 +39,9 @@
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="Output.cpp">
+      <Filter>Arquivos de Origem\ios</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
       <Filter>Arquivos de Origem\ios</Filter>
     </ClCompile>
   </ItemGroup>

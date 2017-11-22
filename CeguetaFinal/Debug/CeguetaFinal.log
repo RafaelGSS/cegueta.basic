@@ -1,2 +1,9 @@
 ﻿  CeguetaFinal.cpp
-  CeguetaFinal.vcxproj -> C:\Users\Rafael\source\repos\CeguetaFinal\Debug\CeguetaFinal.exe
+c:\users\rafael\source\repos\ceguetafinal\ceguetafinal\ceguetafinal.cpp(1): warning C4603: '_WINSOCK_DEPRECATED_NO_WARNINGS': macro não está definida ou definição é diferente após uso de cabeçalho pré-compilado
+  c:\users\rafael\source\repos\ceguetafinal\ceguetafinal\ceguetafinal.cpp(1): note: Adicione macro ao cabeçalho pré-compilado em vez de definir aqui
+  c:\users\rafael\source\repos\ceguetafinal\ceguetafinal\ceguetafinal.cpp(4): note: uso de cabeçalho pré-compilado
+c:\users\rafael\source\repos\ceguetafinal\ceguetafinal\ceguetafinal.cpp(2): warning C4603: '_CRT_SECURE_NO_WARNINGS': macro não está definida ou definição é diferente após uso de cabeçalho pré-compilado
+  c:\users\rafael\source\repos\ceguetafinal\ceguetafinal\ceguetafinal.cpp(2): note: Adicione macro ao cabeçalho pré-compilado em vez de definir aqui
+  c:\users\rafael\source\repos\ceguetafinal\ceguetafinal\ceguetafinal.cpp(4): note: uso de cabeçalho pré-compilado
+MSVCRTD.lib(exe_main.obj) : error LNK2019: símbolo externo indefinido _main referenciado na função "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\Users\Rafael\source\repos\CeguetaFinal\Debug\CeguetaFinal.exe : fatal error LNK1120: 1 externo não resolvidos
