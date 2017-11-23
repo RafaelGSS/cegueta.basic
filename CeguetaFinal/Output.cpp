@@ -85,10 +85,10 @@ void Output::SetVoice(CComPtr<ISpVoice>  _cpVoice, std::wstring _voiceName)
 	IEnumSpObjectTokens *pProfileEnum;
 	SpEnumTokens(SPCAT_VOICES, NULL, NULL, &pProfileEnum);
 
-	unsigned long l;
-	pProfileEnum->GetCount(&l);
+	unsigned long voices;
+	pProfileEnum->GetCount(&voices);
 
-	for (unsigned long i = 0; i < l; ++i) {
+	for (unsigned long i = 0; i < voices; ++i) {
 		CComPtr<ISpObjectToken> IT;
 		pProfileEnum->Item(i, &IT);
 		WCHAR *wptr;
