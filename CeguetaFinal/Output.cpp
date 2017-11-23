@@ -23,7 +23,7 @@ Output::~Output()
 
 void Output::welcomeMenu()
 {
-	std::string myString("Nando puto");
+	std::string myString("Olá, seja bem vindo ao Cegueta! Eu sou Vitória, e vou lhe guiar nessa aventura!");
 	if (!speakerText(myString))
 		std::cout << "An error occurred\n";
 }
@@ -36,6 +36,9 @@ void Output::speakMenu(const int pos)
 
 bool Output::speakerText(std::string text)
 {
+	auto converted = convertLp(text);
+	LPCWSTR phrase = converted.c_str();
+
 	CoInitialize(0);
 	CComPtr<ISpVoice>   cpVoice;
 	CComPtr<ISpAudio>   cpOutAudio;
@@ -50,7 +53,7 @@ bool Output::speakerText(std::string text)
 
 	SetVoice(cpVoice, L"IVONA 2 Vitória - Brazilian Portuguese female voice [22kHz]");
 	if (cpVoice) {
-		cpVoice->Speak(L"Marcos gosta de leite de macho!", SVSFIsXML | SVSFPurgeBeforeSpeak, NULL);
+		cpVoice->Speak(phrase,SVSFPurgeBeforeSpeak, NULL);
 	}
 
 	return true;
