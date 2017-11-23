@@ -3,6 +3,10 @@
 #include <sapi.h>
 #include <string>
 #include <iostream>
+#include <sphelper.h>  
+
+#include <atlbase.h>
+
 
 using namespace cegueta;
 using namespace ios;
@@ -19,7 +23,7 @@ Output::~Output()
 
 void Output::welcomeMenu()
 {
-	std::string myString("Hello world");
+	std::string myString("Nando puto");
 	if (!speakerText(myString))
 		std::cout << "An error occurred\n";
 }
@@ -32,21 +36,23 @@ void Output::speakMenu(const int pos)
 
 bool Output::speakerText(std::string text)
 {
-	LPCWSTR result = convertLp(text).c_str();
+	CoInitialize(0);
+	CComPtr<ISpVoice>   cpVoice;
+	CComPtr<ISpAudio>   cpOutAudio;
 
-	ISpVoice* speaker = NULL;
-	if (FAILED(::CoInitialize(NULL))) {
-		return false;
-	}
-	HRESULT hr = CoCreateInstance(CLSID_SpVoice, NULL, CLSCTX_ALL, IID_ISpVoice, (void **)&speaker);
-	if (SUCCEEDED(hr))
-	{
-		hr = speaker->Speak(L"HELLO WORLD", 0, NULL);
-		speaker->Release();
-		speaker = NULL;
+	HRESULT hr = cpVoice.CoCreateInstance(CLSID_SpVoice);
+
+	SpCreateDefaultObjectFromCategoryId(SPCAT_AUDIOOUT, &cpOutAudio);
+
+	if (nullptr != cpVoice) {
+		hr = cpVoice->SetOutput(cpOutAudio, FALSE);
 	}
 
-	::CoUninitialize();
+	SetVoice(cpVoice, L"Microsoft Anna - English (United States)");
+	if (cpVoice) {
+		cpVoice->Speak(L"<pitch absmiddle=\"+10\">This is a really high pitched voice</pitch> <pitch absmiddle=\"-10\"> but the pitch drops half way through</pitch>", SVSFIsXML | SVSFPurgeBeforeSpeak, NULL);
+	}
+
 	return true;
 }
 
@@ -71,6 +77,26 @@ std::wstring Output::convertLp(const std::string& s)
 	return r;
 }
 
+void Output::SetVoice(CComPtr<ISpVoice>  _cpVoice, std::wstring _voiceName)
+{
+	IEnumSpObjectTokens *pProfileEnum;
+	SpEnumTokens(SPCAT_VOICES, NULL, NULL, &pProfileEnum);
+
+	unsigned long l;
+	pProfileEnum->GetCount(&l);
+
+	for (unsigned long i = 0; i < l; ++i) {
+		CComPtr<ISpObjectToken> IT;
+		pProfileEnum->Item(i, &IT);
+		WCHAR *wptr;
+		IT->GetId(&wptr);
+		CSpDynamicString dstrDefaultName;
+		SpGetDescription(IT, &dstrDefaultName);
+		if (wcsncmp(dstrDefaultName, _voiceName.c_str(), _voiceName.size()) == 0) {
+			_cpVoice->SetVoice(IT);
+		}
+	}
+}
 
 /* TODO IMPLEMENTING
 
