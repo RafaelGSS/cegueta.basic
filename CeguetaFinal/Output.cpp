@@ -48,9 +48,9 @@ bool Output::speakerText(std::string text)
 		hr = cpVoice->SetOutput(cpOutAudio, FALSE);
 	}
 
-	SetVoice(cpVoice, L"Microsoft Anna - English (United States)");
+	SetVoice(cpVoice, L"IVONA 2 Vitória - Brazilian Portuguese female voice [22kHz]");
 	if (cpVoice) {
-		cpVoice->Speak(L"<pitch absmiddle=\"+10\">This is a really high pitched voice</pitch> <pitch absmiddle=\"-10\"> but the pitch drops half way through</pitch>", SVSFIsXML | SVSFPurgeBeforeSpeak, NULL);
+		cpVoice->Speak(L"Marcos gosta de leite de macho!", SVSFIsXML | SVSFPurgeBeforeSpeak, NULL);
 	}
 
 	return true;
