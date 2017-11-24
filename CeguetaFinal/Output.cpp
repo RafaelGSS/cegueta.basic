@@ -4,44 +4,18 @@
 #include <string>
 #include <iostream>
 #include <sphelper.h>  
-
 #include <atlbase.h>
 
+#define VOICE L"IVONA 2 Ricardo - Brazilian Portuguese male voice [22kHz]"
 
 using namespace cegueta;
 using namespace ios;
 
 Output::Output()
 {
-	
-}
+	if (CoInitialize(0) != S_OK);
+		//Logger::error("Unitialized Library COM");
 
-
-Output::~Output()
-{
-}
-
-void Output::welcomeMenu()
-{
-	std::string myString("Olá, seja bem vindo ao Cegueta! Eu sou Vitória, e vou lhe guiar nessa aventura!");
-	if (!speakerText(myString))
-		std::cout << "An error occurred\n";
-}
-
-void Output::speakMenu(const int pos)
-{
-	
-}
-
-
-bool Output::speakerText(std::string text)
-{
-	auto converted = convertLp(text);
-	LPCWSTR phrase = converted.c_str();
-
-	CoInitialize(0);
-	CComPtr<ISpVoice>   cpVoice;
-	CComPtr<ISpAudio>   cpOutAudio;
 
 	HRESULT hr = cpVoice.CoCreateInstance(CLSID_SpVoice);
 
@@ -51,12 +25,38 @@ bool Output::speakerText(std::string text)
 		hr = cpVoice->SetOutput(cpOutAudio, FALSE);
 	}
 
-	SetVoice(cpVoice, L"IVONA 2 Vitória - Brazilian Portuguese female voice [22kHz]");
-	if (cpVoice) {
-		cpVoice->Speak(phrase,SVSFPurgeBeforeSpeak, NULL);
-	}
+	if (SetVoice(cpVoice, VOICE));
+		//Logger::error("Error while setting voice");
+}
 
-	return true;
+
+Output::~Output()
+{
+	::CoUninitialize();
+}
+
+void Output::welcomeMenu()
+{
+	// Ler de uma classe com strings predefinidas
+	std::string myString("Olá, seja bem vindo ao Cegueta! Eu sou Ricardo, e vou lhe guiar nessa aventura!");
+	
+	HRESULT spc = speakerText(myString);
+	if ( spc != S_OK);
+		//Logger::error("An error ocurred in speaking: " + spc);
+}
+
+
+HRESULT Output::speakerText(std::string text)
+{
+	auto converted = convertWSTR(text);
+	LPCWSTR phrase = converted.c_str();
+
+	return cpVoice->Speak(phrase,SVSFPurgeBeforeSpeak, NULL);
+}
+
+HRESULT Output::speakerFile(std::string path)
+{
+
 }
 
 Output* Output::get()
@@ -68,7 +68,7 @@ Output* Output::get()
 }
 
 
-std::wstring Output::convertLp(const std::string& s)
+std::wstring Output::convertWSTR(const std::string& s)
 {
 	int len;
 	int slength = (int)s.length() + 1;
@@ -80,7 +80,7 @@ std::wstring Output::convertLp(const std::string& s)
 	return r;
 }
 
-void Output::SetVoice(CComPtr<ISpVoice>  _cpVoice, std::wstring _voiceName)
+HRESULT Output::SetVoice(CComPtr<ISpVoice>  _cpVoice, std::wstring _voiceName)
 {
 	IEnumSpObjectTokens *pProfileEnum;
 	SpEnumTokens(SPCAT_VOICES, NULL, NULL, &pProfileEnum);
@@ -91,17 +91,19 @@ void Output::SetVoice(CComPtr<ISpVoice>  _cpVoice, std::wstring _voiceName)
 	for (unsigned long i = 0; i < voices; ++i) {
 		CComPtr<ISpObjectToken> IT;
 		pProfileEnum->Item(i, &IT);
-		WCHAR *wptr;
-		IT->GetId(&wptr);
 		CSpDynamicString dstrDefaultName;
 		SpGetDescription(IT, &dstrDefaultName);
 		if (wcsncmp(dstrDefaultName, _voiceName.c_str(), _voiceName.size()) == 0) {
-			_cpVoice->SetVoice(IT);
+			return _cpVoice->SetVoice(IT);
 		}
 	}
+
+	return E_INVALIDARG;
 }
 
-/* TODO IMPLEMENTING
+/*
+
+TODO IMPLEMENTING
 
 speaker->Release();
 

@@ -5,7 +5,6 @@
 #include <string>
 #include <iostream>
 #include <sphelper.h>  
-
 #include <atlbase.h>
 
 namespace cegueta {
@@ -16,13 +15,15 @@ namespace cegueta {
 			Output();
 			~Output();
 			void welcomeMenu();
-			void speakMenu(const int);
 			static Output* get();
-			bool speakerText(std::string);
-			std::wstring convertLp(const std::string& s);
-			void SetVoice(CComPtr<ISpVoice>  _cpVoice, std::wstring _voiceName);
+			HRESULT speakerText(std::string);
+			HRESULT speakerFile(std::string path);
+			std::wstring convertWSTR(const std::string& s);
+			HRESULT SetVoice(CComPtr<ISpVoice>  _cpVoice, std::wstring _voiceName);
+
 		private:
-			
+			CComPtr<ISpVoice>   cpVoice;
+			CComPtr<ISpAudio>   cpOutAudio;
 		};
 	}
 }

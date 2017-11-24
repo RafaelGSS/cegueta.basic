@@ -1,0 +1,4 @@
+﻿  Output.cpp
+c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\sphelper.h(1319): warning C4996: 'GetVersionExW': foi declarado preterido
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\um\sysinfoapi.h(445): note: consulte a declaração de 'GetVersionExW'
+  CeguetaFinal.vcxproj -> C:\Users\rafae\source\repos\cegueta.basic\x64\Debug\CeguetaFinal.exe

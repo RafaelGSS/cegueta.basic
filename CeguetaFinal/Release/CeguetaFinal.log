@@ -1,9 +1,12 @@
 ﻿  Output.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\um\sphelper.h(1319): warning C4996: 'GetVersionExW': foi declarado preterido
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\um\sysinfoapi.h(445): note: consulte a declaração de 'GetVersionExW'
+Output.cpp(16): warning C4390: ';': instrução controlada vazia encontrada; é esta a intenção?
+Output.cpp(28): warning C4390: ';': instrução controlada vazia encontrada; é esta a intenção?
+Output.cpp(44): warning C4390: ';': instrução controlada vazia encontrada; é esta a intenção?
   Gerando código
-  0 of 252 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  8 of 244 functions ( 3.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finalizada a geração de código
-  CeguetaFinal.vcxproj -> C:\Users\Rafael\source\repos\CeguetaFinal\Release\CeguetaFinal.exe
+  CeguetaFinal.vcxproj -> C:\Users\rafae\source\repos\cegueta.basic\Release\CeguetaFinal.exe
