@@ -16,6 +16,9 @@
     <Filter Include="Arquivos de Origem\ios">
       <UniqueIdentifier>{672a12a3-314a-4393-abfb-f5205d7f6980}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Arquivos de Origem\log">
+      <UniqueIdentifier>{3b98e559-13a4-4ed5-9a2e-f00ff40e9813}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -28,6 +31,9 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
@@ -43,6 +49,9 @@
     </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>Arquivos de Origem\ios</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Arquivos de Origem\log</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

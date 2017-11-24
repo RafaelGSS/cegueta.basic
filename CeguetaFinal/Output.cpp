@@ -1,12 +1,14 @@
 #include "stdafx.h"
 #include "Output.h"
+#include "Logger.h"
+
 #include <sapi.h>
 #include <string>
 #include <iostream>
 #include <sphelper.h>  
 #include <atlbase.h>
 
-#define VOICE L"IVONA 2 Ricardo - Brazilian Portuguese male voice [22kHz]"
+#define VOICE L"IVONA 2 Vitória - Brazilian Portuguese female voice [22kHz]"
 
 using namespace cegueta;
 using namespace ios;
@@ -14,7 +16,7 @@ using namespace ios;
 Output::Output()
 {
 	if (CoInitialize(0) != S_OK);
-		//Logger::error("Unitialized Library COM");
+		log::Logger::get()->error("Unitialized Library COM");
 
 
 	HRESULT hr = cpVoice.CoCreateInstance(CLSID_SpVoice);
@@ -26,7 +28,7 @@ Output::Output()
 	}
 
 	if (SetVoice(cpVoice, VOICE));
-		//Logger::error("Error while setting voice");
+		log::Logger::get()->error("Error while setting voice");
 }
 
 
@@ -38,11 +40,11 @@ Output::~Output()
 void Output::welcomeMenu()
 {
 	// Ler de uma classe com strings predefinidas
-	std::string myString("Olá, seja bem vindo ao Cegueta! Eu sou Ricardo, e vou lhe guiar nessa aventura!");
+	std::string myString("Olá, seja bem vindo ao Cegueta! Eu sou Vitória, e vou lhe guiar nessa aventura!");
 	
 	HRESULT spc = speakerText(myString);
 	if ( spc != S_OK);
-		//Logger::error("An error ocurred in speaking: " + spc);
+		log::Logger::get()->error("An error ocurred in speaking: " + spc);
 }
 
 
