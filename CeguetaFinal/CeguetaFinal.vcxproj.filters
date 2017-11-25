@@ -19,6 +19,9 @@
     <Filter Include="Arquivos de Origem\log">
       <UniqueIdentifier>{3b98e559-13a4-4ed5-9a2e-f00ff40e9813}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Arquivos de Origem\reader">
+      <UniqueIdentifier>{f4ae9096-3990-4be2-8c51-9b1e500e2e68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -34,6 +37,12 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Logger.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonReader.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
@@ -52,6 +61,9 @@
     </ClCompile>
     <ClCompile Include="Logger.cpp">
       <Filter>Arquivos de Origem\log</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonReader.cpp">
+      <Filter>Arquivos de Origem\reader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -8,10 +8,11 @@
 #include <sphelper.h>  
 #include <atlbase.h>
 
-#define VOICE L"IVONA 2 Vitória - Brazilian Portuguese female voice [22kHz]"
+#define VOICE L"IVONA 2 Ricardo - Brazilian Portuguese male voice [22kHz]"
 
 using namespace cegueta;
 using namespace ios;
+
 
 Output::Output()
 {
@@ -65,7 +66,7 @@ Output* Output::get()
 {
 	static Output* singleton = nullptr;
 	if (!singleton)
-		singleton = new Output;
+		singleton = new Output();
 	return singleton;
 }
 
