@@ -22,15 +22,18 @@
     <Filter Include="Arquivos de Origem\reader">
       <UniqueIdentifier>{f4ae9096-3990-4be2-8c51-9b1e500e2e68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Arquivos de Origem\settings">
+      <UniqueIdentifier>{adf4d559-4a98-453b-86ef-27b55495815a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Arquivos de Origem\handler">
+      <UniqueIdentifier>{17a013b7-7818-44fd-8793-73568441fac2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
-    <ClInclude Include="Output.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
@@ -45,6 +48,15 @@
     <ClInclude Include="JsonReader.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="stringHandler.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Speaker.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -52,9 +64,6 @@
     </ClCompile>
     <ClCompile Include="CeguetaFinal.cpp">
       <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
-    <ClCompile Include="Output.cpp">
-      <Filter>Arquivos de Origem\ios</Filter>
     </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>Arquivos de Origem\ios</Filter>
@@ -64,6 +73,15 @@
     </ClCompile>
     <ClCompile Include="JsonReader.cpp">
       <Filter>Arquivos de Origem\reader</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Arquivos de Origem\settings</Filter>
+    </ClCompile>
+    <ClCompile Include="stringHandler.cpp">
+      <Filter>Arquivos de Origem\handler</Filter>
+    </ClCompile>
+    <ClCompile Include="Speaker.cpp">
+      <Filter>Arquivos de Origem\ios</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

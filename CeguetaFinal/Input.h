@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+#include "Speaker.h"
+
 namespace cegueta {
 	namespace ios {
 		class Input
@@ -6,7 +9,8 @@ namespace cegueta {
 		public:
 			Input();
 			~Input();
-			
+			static Input* get();
+			void waitCommand();
 		};
 	}
 }
