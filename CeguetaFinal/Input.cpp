@@ -73,7 +73,7 @@ void Input::verifyEvent(std::string input)
 
 void Input::waitCommand()
 {
-	Sleep(2000);
+	Sleep(2000);8[-0]
 	std::string option;
 	char pause;
 	while (true)
@@ -90,7 +90,7 @@ void Input::waitCommand()
 			continue;
 		}
 
-		//verifyEvent(option);
+		verifyEvent(option);
 		
 	}
 }
