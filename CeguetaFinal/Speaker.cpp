@@ -8,6 +8,7 @@ using namespace ios;
 
 Speaker::Speaker()
 {
+	this->speaking = NO_SPEAKING;
 	if (CoInitialize(0) != S_OK)
 		log::Logger::get()->error("Unitialized Library COM ");
 
@@ -46,18 +47,25 @@ HRESULT Speaker::speakerText(std::string text)
 	auto converted = handler::string::stringToWinWStr(text);
 	LPCWSTR phrase = converted.c_str();
 
+	this->speaking = SPEAKING;
 	auto code = cpVoice->Speak(
 			phrase,
 			SVSFPurgeBeforeSpeak,
 			NULL);
 
+	this->speaking = NO_SPEAKING;
 	return code;
 }
 
 HRESULT Speaker::speakerFile(std::string path)
 {
 	auto file = handler::string::stringToWinWStr(path);
-	return cpVoice->Speak(file.c_str(), SPF_IS_FILENAME, NULL);
+
+	this->speaking = SPEAKING;
+	auto code = cpVoice->Speak(file.c_str(), SPF_IS_FILENAME, NULL);
+	this->speaking = NO_SPEAKING;
+
+	return code;
 }
 
 Speaker* Speaker::get()
@@ -93,14 +101,13 @@ HRESULT Speaker::SetVoice(CComPtr<ISpVoice>  _cpVoice, std::wstring _voiceName)
 
 void Speaker::keyPausePressed()
 {
-	static bool speaking = true;
-	if (!speaking) {
+	if (speaking == PAUSE) {
 		cpVoice->Resume();
-		speaking = true;
+		this->speaking = SPEAKING;
 	}
-	else {
+	else if(speaking == SPEAKING) {
 		cpVoice->Pause();
-		speaking = false;
+		this->speaking = PAUSE;
 	}
 }
 /*

@@ -3,9 +3,9 @@
 #include <vector>
 #include <utility>
 
-#define KEYUP 0
 #define SPEAKER_FILE 1
 #define SPEAKER 2
+#define SPEAKER_MENU 3
 
 typedef int KEYWORD;
 

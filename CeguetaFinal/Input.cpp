@@ -7,6 +7,7 @@ using namespace ios;
 
 Input::Input()
 {
+	menu = UNDEFINED;
 }
 
 
@@ -34,28 +35,62 @@ void Input::run()
 
 }
 
-void Input::selectMenu(int& menu, char option)
+void Input::selectMenu(std::string option)
+{
+	switch (toupper(option[0]))
+	{
+	case 'L':
+		menu = LER_DOC;
+		events::Notification::get()->addNotification(SPEAKER, "Qual nome do arquivo que você deseja ler ? ");
+		break;
+	case 'H':
+		menu = AJUDA;
+		break;
+	case 'J':
+		menu = JOGOS;
+		break;
+	case 'T':
+		menu = LER_TEXTO;
+		break;
+	default:
+		break;
+	}
+
+
+}
+
+void Input::verifyEvent(std::string input)
+{
+	switch (menu)
+	{
+	case LER_DOC:
+		events::Notification::get()->addNotification(SPEAKER_FILE, input);
+		break;
+	default:
+		break;
+	}
+}
 
 void Input::waitCommand()
 {
-	char option;
+	Sleep(2000);
+	std::string option;
+	char pause;
 	while (true)
 	{
-		option = _getch();
-		if (posMenu == 0)
-			selectMenu(posMenu, ctrl);
-		switch (ctrl)
-		{
-		case 'L' || 'l':
-			break;
-		case 'H' || 'h':
-			break;
-		case 'J' || 'j':
-			break;
-		case 'T' || 't':
-			break;
-		default:
-			break;
+		while(Speaker::get()->speaking != NO_SPEAKING) {
+			pause = _getch();
+			if (pause == 'P' || pause == 'p' && Speaker::get()->speaking != NO_SPEAKING)
+				Speaker::get()->keyPausePressed();
 		}
+
+		std::cin >> option;
+		if (menu == UNDEFINED) {
+			selectMenu(option);
+			continue;
+		}
+
+		//verifyEvent(option);
+		
 	}
 }

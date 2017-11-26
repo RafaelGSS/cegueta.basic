@@ -15,7 +15,6 @@ namespace cegueta {
 		static CeguetaManager* get();
 	private:
 		void runnerCegueta();
-		static bool running;
 	};
 
 }

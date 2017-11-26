@@ -5,21 +5,15 @@ using namespace cegueta;
 
 CeguetaManager::CeguetaManager()
 {
-	running = false;
 }
 
 
 CeguetaManager::~CeguetaManager()
 {
-	running = false;
 }
 
 void CeguetaManager::run()
 {
-	if (running)
-		return;
-
-	running = true;
 
 	std::thread(
 		std::bind(
@@ -40,15 +34,14 @@ void CeguetaManager::runnerCegueta()
 			events::Notification::get()->getNotification(_tmpNotification);
 			switch (_tmpNotification.first)
 			{
-			case KEYUP:
-				ios::Speaker::get()->keyPausePressed();
-				break;
 			case SPEAKER:
 				ios::Speaker::get()->speakerText(_tmpNotification.second);
 				break;
 			case SPEAKER_FILE:
 				ios::Speaker::get()->speakerFile(_tmpNotification.second);
 				break;
+			case SPEAKER_MENU:
+				ios::Speaker::get()->speakerFile(std::string("C:\\Users\\rafae\\") +_tmpNotification.second);
 			default:
 				break;
 			}
