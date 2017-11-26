@@ -35,10 +35,7 @@ Speaker::~Speaker()
 
 void Speaker::welcomeMenu()
 {
-	// Ler de uma classe com strings predefinidas
-	std::string myString("Olá, seja bem vindo ao Cegueta! Eu sou Vitória, e vou lhe guiar nessa aventura!");
-	
-	HRESULT spc = speakerText(myString);
+	HRESULT spc = speakerFile("C:\\Users\\rafae\\welcome.txt");
 	if ( spc != S_OK)
 		log::Logger::get()->error("An error ocurred in speaking: " + spc);
 }

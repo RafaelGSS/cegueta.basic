@@ -1,9 +1,4 @@
-﻿  Speaker.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\um\sphelper.h(1319): warning C4996: 'GetVersionExW': foi declarado preterido
-  C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\um\sysinfoapi.h(445): note: consulte a declaração de 'GetVersionExW'
-  Gerando código
-  0 of 658 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Finalizada a geração de código
-  CeguetaFinal.vcxproj -> C:\Users\rafae\source\repos\cegueta.basic\Release\CeguetaFinal.exe
+﻿  Input.cpp
+Input.cpp(47): error C2440: '<function-style-cast>': não é possível converter de 'char' para 'std::string'
+  Input.cpp(47): note: Nenhum construtor pôde receber o tipo de origem, ou resolução de sobrecarga de construtor foi ambígua
+Input.cpp(47): error C2660: 'cegueta::events::Notification::addNotification': função não recebe 1 argumentos

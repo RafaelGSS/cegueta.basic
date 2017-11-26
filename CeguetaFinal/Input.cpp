@@ -23,13 +23,39 @@ Input* Input::get()
 	return singleton;
 }
 
+void Input::run()
+{
+	std::thread(
+		std::bind(
+			&Input::waitCommand,
+			this
+		)
+	).detach();
+
+}
+
+void Input::selectMenu(int& menu, char option)
+
 void Input::waitCommand()
 {
-	char ctrl;
+	char option;
 	while (true)
 	{
-		ctrl = getchar();
-		if (ctrl == 'p')
-			Speaker::get()->keyPausePressed();
+		option = _getch();
+		if (posMenu == 0)
+			selectMenu(posMenu, ctrl);
+		switch (ctrl)
+		{
+		case 'L' || 'l':
+			break;
+		case 'H' || 'h':
+			break;
+		case 'J' || 'j':
+			break;
+		case 'T' || 't':
+			break;
+		default:
+			break;
+		}
 	}
 }

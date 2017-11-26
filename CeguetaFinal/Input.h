@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
-#include "Speaker.h"
+#include <thread>
+#include <functional>
+#include <conio.h>
+#include "Notification.h"
 
 namespace cegueta {
 	namespace ios {
@@ -10,7 +13,9 @@ namespace cegueta {
 			Input();
 			~Input();
 			static Input* get();
+			void run();
 			void waitCommand();
+			void selectMenu(int&, char);
 		};
 	}
 }

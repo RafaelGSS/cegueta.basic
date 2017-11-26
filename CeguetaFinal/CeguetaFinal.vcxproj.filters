@@ -57,6 +57,12 @@
     <ClInclude Include="Speaker.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="CeguetaManager.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Notification.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -82,6 +88,12 @@
     </ClCompile>
     <ClCompile Include="Speaker.cpp">
       <Filter>Arquivos de Origem\ios</Filter>
+    </ClCompile>
+    <ClCompile Include="CeguetaManager.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Notification.cpp">
+      <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

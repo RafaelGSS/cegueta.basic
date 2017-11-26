@@ -143,10 +143,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CeguetaManager.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="Notification.h" />
     <ClInclude Include="Speaker.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="stringHandler.h" />
@@ -155,9 +157,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CeguetaFinal.cpp" />
+    <ClCompile Include="CeguetaManager.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="Notification.cpp" />
     <ClCompile Include="Speaker.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
